@@ -28,7 +28,8 @@ export default async function middleware(req: NextRequest) {
     const isMainApp =
         hostname === 'localhost:3000' ||
         hostname === process.env.NEXT_PUBLIC_ROOT_DOMAIN ||
-        hostname.endsWith('.vercel.app'); // Simplistic check, might need tightening for production
+        hostname.endsWith('.vercel.app') ||
+        hostname.endsWith('.netlify.app'); // Support both Vercel and Netlify deployments
 
     // If it's the main app, proceed as normal (handling dashboard, etc.)
     // But wait, what if 'localhost:3000' IS the main app and accessed directly? 
